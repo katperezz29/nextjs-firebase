@@ -7,11 +7,13 @@ import { getFirestore, collection } from "firebase/firestore";
 
 export default function Home() {
   const auth = getAuth(firebase.app());
-  const [user, loading, error] = useAuthState(auth);
+  const [user] = useAuthState(auth);
   const firestore = getFirestore(firebase.app());
 
-  const [userAcceptanceCollection, collectionLoading, collectionError] =
-    useCollection(collection(firestore, "user-acceptance"), {});
+  const [userAcceptanceCollection, collectionLoading] = useCollection(
+    collection(firestore, "user-acceptance"),
+    {}
+  );
 
   if (!collectionLoading && userAcceptanceCollection) {
     userAcceptanceCollection.docs.map((doc) => {
