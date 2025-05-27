@@ -3,12 +3,13 @@ import firebase from "../firebase/clientApp";
 import "firebaseui/dist/firebaseui.css";
 import { useRouter } from "next/router";
 import "../src/app/globals.css";
+import { GithubAuthProvider } from "firebase/auth";
 
 const uiConfig = {
   signInFlow: "popup",
   signInOptions: [
     {
-      provider: "github.com",
+      provider: GithubAuthProvider.PROVIDER_ID,
       scopes: ["user:email"],
     },
   ],
@@ -31,7 +32,7 @@ function Auth() {
 
     (async () => {
       const firebaseui = await import("firebaseui");
-      const { getAuth, GithubAuthProvider } = await import("firebase/auth");
+      const { getAuth } = await import("firebase/auth");
 
       const auth = getAuth(firebase.app());
       const ui =
