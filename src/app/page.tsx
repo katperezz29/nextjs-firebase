@@ -1,16 +1,10 @@
 "use client";
-// import { useAuthState } from "react-firebase-hooks/auth";
-import { getAuth } from "firebase/auth";
 import firebase from "../../firebase/clientApp"; // Modular auth
 import { useCollection } from "react-firebase-hooks/firestore";
 import { getFirestore, collection } from "firebase/firestore";
-import { useRouter } from "next/navigation";
 import { useState } from "react";
 
 export default function Home() {
-  const router = useRouter();
-  // const auth = getAuth(firebase.app());
-  // const [user] = useAuthState(auth);
   const [name, setName] = useState("");
   const [submit, setSubmit] = useState(false);
   const [showDialog, setShowDialog] = useState(false);
